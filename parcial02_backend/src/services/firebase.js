@@ -2,7 +2,7 @@ const admin = require('firebase-admin');
 
 // Inicializar Firebase Admin SDK con las credenciales
 admin.initializeApp({
-  credential: admin.credential.cert(require('../../parcial-final-b5832-firebase-adminsdk-fbsvc-649beeebf4.json')),
+  credential: admin.credential.cert(require('../../parcial-final-b5832-firebase-adminsdk-fbsvc-b461d5250e.json')),
 });
 
 // Función para enviar notificaciones push
