@@ -3,10 +3,10 @@ import '../models/user.dart';
 import '../widgets/send_message.dart';
 
 // Vista de Perfil de Usuario
-class UserProfileScreen extends StatelessWidget {
+class UserProfileView extends StatelessWidget {
   final User user;
 
-  const UserProfileScreen({Key? key, required this.user}) : super(key: key);
+  const UserProfileView({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +32,13 @@ class UserProfileScreen extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
-
-            // Cargo
-            Text(
-              user.position,
-              style: const TextStyle(
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-                color: Colors.grey,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32),
-
             // Información de contacto
             _buildInfoCard(context),
             const SizedBox(height: 24),
-
             // Botón para enviar mensaje
             ElevatedButton.icon(
               onPressed: () => _showSendMessageDialog(context),
@@ -72,7 +57,6 @@ class UserProfileScreen extends StatelessWidget {
 
   Widget _buildInfoCard(BuildContext context) {
     return Card(
-      elevation: 4,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

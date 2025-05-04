@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
 import '../models/user.dart';
 import '../services/user_service.dart';
 
@@ -116,8 +113,10 @@ class _SendMessageModalState extends State<SendMessageModal> {
 
       try {
         final success = await UserService.sendMessage(
-          widget.user.id,
-          _messageController.text,
+          receiverEmail: widget.user.email,
+          title:
+              'Nuevo mensaje de contacto', // Puedes cambiar este título si lo deseas
+          body: _messageController.text,
         );
 
         setState(() {
@@ -245,8 +244,9 @@ class _SendMessageScreenState extends State<SendMessageScreen> {
 
       try {
         final success = await UserService.sendMessage(
-          widget.user.id,
-          _messageController.text,
+          receiverEmail: widget.user.email,
+          title: 'Nuevo mensaje de contacto',
+          body: _messageController.text,
         );
 
         setState(() {

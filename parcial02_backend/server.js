@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 const authRoutes = require('./src/routes/auth.route');
 const messageRoutes = require('./src/routes/messages.route');
 const userRoutes = require('./src/routes/users.route'); 
@@ -7,6 +8,7 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
+app.use(cors());            
 app.use(express.json());
 
 // Rutas

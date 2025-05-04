@@ -46,4 +46,34 @@ router.post('/send', verifyToken, async (req, res) => {
   }
 });
 
+// Obtener mensajes enviados por el usuario autenticado
+router.get('/sent', verifyToken, async (req, res) => {
+  const userEmail = req.user.email;
+
+  try {
+    const [messages] = await pool.query(
+      'SELECT id, sender_email, receiver_email, title, body, sent_at FROM messages WHERE sender_email = ? ORDER BY sent_at DESC',
+      [userEmail]
+    );
+    res.json(messages);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener mensajes enviados', error: error.message });
+  }
+});
+
+// Obtener mensajes recibidos por el usuario autenticado
+router.get('/received', verifyToken, async (req, res) => {
+  const userEmail = req.user.email;
+
+  try {
+    const [messages] = await pool.query(
+      'SELECT id, sender_email, receiver_email, title, body, sent_at FROM messages WHERE receiver_email = ? ORDER BY sent_at DESC',
+      [userEmail]
+    );
+    res.json(messages);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener mensajes recibidos', error: error.message });
+  }
+});
+
 module.exports = router;

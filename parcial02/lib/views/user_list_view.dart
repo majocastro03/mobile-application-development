@@ -4,15 +4,14 @@ import '../services/user_service.dart';
 import 'user_view.dart';
 
 // Vista de Lista de Usuarios
-class UsersListScreen extends StatefulWidget {
-  const UsersListScreen({Key? key}) : super(key: key);
+class UsersListView extends StatefulWidget {
+  const UsersListView({super.key});
 
   @override
-  State<UsersListScreen> createState() => _UsersListScreenState();
+  State<UsersListView> createState() => _UsersListViewState();
 }
 
-class _UsersListScreenState extends State<UsersListScreen> {
-  late Future<List<User>> _usersFuture;
+class _UsersListViewState extends State<UsersListView> {
   bool _isLoading = true;
   List<User> _users = [];
   String _errorMessage = '';
@@ -114,7 +113,7 @@ class _UsersListScreenState extends State<UsersListScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UserProfileScreen(user: user),
+              builder: (context) => UserProfileView(user: user),
             ),
           );
         },

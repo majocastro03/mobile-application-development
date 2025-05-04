@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 // Vista de Inicio
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Inicio'),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              // Implementar cierre de sesión
+              // Cerrar sesión
               Navigator.pushReplacementNamed(context, '/');
             },
           ),
@@ -26,17 +27,25 @@ class HomeScreen extends StatelessWidget {
             const Icon(
               Icons.check_circle,
               color: Colors.green,
-              size: 80,
+              size: 40,
             ),
             const SizedBox(height: 24),
             const Text(
               '¡Autenticación Exitosa!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/users');
+              },
+              child: const Text('Ver Usuarios'),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Has iniciado sesión correctamente',
-              style: TextStyle(fontSize: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/messages');
+              },
+              child: const Text('Ver Mensajes'),
             ),
           ],
         ),
